@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto 2</title>
+    
+    <!-- Cargar Bootstrap desde CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="{% static 'js/scripts.js' %}" defer></script>
+</head>
+<body>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Predicción del cancer</a>
+    </nav>
+    <div class="container-fluid">
+        <div class="row bg-light p-3">
+          <div class="col-md-3 mb-1">
+            <div class="row bg-light p-3">
+                <div class="col-md-12 mb-1">
+                  <label for="Sexo" class="form-label"><strong>Sexo</strong></label>
+                </div>
+                <div class="col-md-3 mb-1">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Sexo" id="masculino" value="M">
+                    <label class="form-check-label" for="masculino">
+                      Masculino
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-1">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Sexo" id="femenino" value="F">
+                    <label class="form-check-label" for="femenino">
+                      Femenino
+                    </label>
+                  </div>
+                </div>
+              </div>
+              
+          </div>
+          <div class="col-md-3 mb-1">
+            <div class="row bg-light p-3">
+                <div class="col-md-12 mb-1">
+                  <label for="Age" class="form-label"><strong>Edad</strong></label>
+                  <input type="number" class="form-control" id="Age" name="Age" placeholder="Introduce tu edad" min="0" max="120">
+                </div>
+              </div>
+          </div>
+          <div class="col-md-3 mb-1">
+            <div class="row bg-light p-3">
+                <div class="col-md-12 mb-1">
+                  <label for="Family history" class="form-label"><strong>¿Precedentes?</strong></label>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="Family history" name="Family history">
+                    <label class="form-check-label" for="Family history">Sí</label>
+                  </div>
+                </div>
+              </div>              
+          </div>
+          <div class="col-md-3 mb-1">
+            <div class="row bg-light p-3">
+                <div class="col-md-12 mb-1">
+                  <label for="smoke" class="form-label"><strong>¿Fumador?</strong></label>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="smoke" name="smoke">
+                    <label class="form-check-label" for="smoke">Sí</label>
+                  </div>
+                </div>
+              </div>              
+          </div>
+        </div>
+        <div class="row bg-light p-3">
+          <div class="col-md-3 mb-1">
+            <div class="row bg-light p-3">
+                <div class="col-md-12 mb-1">
+                  <label for="alcohol" class="form-label"><strong>¿Alcohol?</strong></label>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="alcohol" name="alcohol">
+                    <label class="form-check-label" for="alcohol">Sí</label>
+                  </div>
+                </div>
+              </div>
+            
+          </div>
+          <div class="col-md-3 mb-1">
+            <div class="row bg-light p-3">
+                <div class="col-md-12 mb-1">
+                  <label for="obesity" class="form-label"><strong>Obesidad</strong></label>
+                </div>
+                <div class="col-md-12 mb-1">
+                  <select class="form-select" id="obesity" name="obesity">
+                    <option value="" disabled selected>Selecciona un tipo de obesidad</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Overweight">Sobrepeso</option>
+                    <option value="Obese">Obeso</option>
+                  </select>
+                </div>
+              </div>
+              
+          </div>
+          <div class="col-md-3 mb-1">
+            <div class="row bg-light p-3">
+                <div class="col-md-12 mb-1">
+                  <label for="diet" class="form-label"><strong>Dieta</strong></label>
+                </div>
+                <div class="col-md-12 mb-1">
+                  <select class="form-select" id="diet" name="diet">
+                    <option value="" disabled selected>Selecciona un tipo de dieta</option>
+                    <option value="Low">Baja</option>
+                    <option value="Moderate">Moderada</option>
+                    <option value="High">Alta</option>
+                  </select>
+                </div>
+              </div>
+              
+          </div>
+          <div class="col-md-3 mb-1">
+            <div class="row bg-light p-3">
+                <div class="col-md-12 mb-1">
+                  <label for="Screening_History" class="form-label"><strong>Historial de detección</strong></label>
+                </div>
+                <div class="col-md-12 mb-1">
+                  <select class="form-select" id="Screening_History" name="Screening_History">
+                    <option value="" disabled selected>Selecciona un tipo de historial</option>
+                    <option value="Never">Nunca</option>
+                    <option value="Irregular">Irregular</option>
+                    <option value="Regular">Regular</option>
+                  </select>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="row bg-light p-3">
+          <div class="col-md-3 mb-1">
+            <div class="row bg-light p-3">
+                <div class="col-md-12 mb-1">
+                  <label for="Healthcare_Access" class="form-label"><strong>Acceso a atención médica</strong></label>
+                </div>
+                <div class="col-md-12 mb-1">
+                  <select class="form-select" id="Healthcare_Access" name="Healthcare_Access">
+                    <option value="" disabled selected>Selecciona un tipo de acceso</option>
+                    <option value="Low">Baja</option>
+                    <option value="Moderate">Moderada</option>
+                    <option value="High">Alta</option>
+                  </select>
+                </div>
+              </div>
+              
+          </div>
+          <div class="col-md-3 mb-1">
+            <div class="row bg-light p-3">
+                <div class="col-md-12 mb-1">
+                  <label for="cancer_stage" class="form-label"><strong>Etapa del cáncer</strong></label>
+                </div>
+                <div class="col-md-12 mb-1">
+                  <select class="form-select" id="cancer_stage" name="cancer_stage">
+                    <option value="" disabled selected>Selecciona un tipo de etapa</option>
+                    <option value="Localized">Localizado</option>
+                    <option value="Regional">Regional</option>
+                    <option value="Metastatic">Metastásico</option>
+                  </select>
+                </div>
+              </div>
+              
+          </div>
+          <div class="col-md-3 mb-1">
+            <div class="row bg-light p-3">
+                <div class="col-md-12 mb-1">
+                  <label for="tumor_size" class="form-label"><strong>Tamaño tumor</strong></label>
+                  <input type="number" class="form-control" id="tumor_size" name="tumor_size" placeholder="Introduce tu edad" min="0" max="120">
+                </div>
+              </div>
+              
+          </div>
+          <div class="col-md-3 mb-1">
+            <div class="row bg-light p-3">
+                <div class="col-md-12 mb-1">
+                  <label for="early_detection" class="form-label"><strong>¿Detección temprana?</strong></label>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="early_detection" name="early_detection">
+                    <label class="form-check-label" for="early_detection">Sí</label>
+                  </div>
+                </div>
+              </div>
+              
+          </div>
+        </div>
+        <div class="row bg-light p-3">
+          <div class="col-md-3 mb-1">
+            <div class="row bg-light p-3">
+                <div class="col-md-12 mb-1">
+                  <label for="inflammatory_bowel_disease" class="form-label"><strong>¿Enfermedad inflamatoria intestinal?</strong></label>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="inflammatory_bowel_disease" name="inflammatory_bowel_disease">
+                    <label class="form-check-label" for="inflammatory_bowel_disease">Sí</label>
+                  </div>
+                </div>
+              </div>
+              
+          </div>
+          <div class="col-md-3 mb-1">
+            <div class="row bg-light p-3">
+                <div class="col-md-12 mb-1">
+                  <label for="relapse" class="form-label"><strong>¿Recaída?</strong></label>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="relapse" name="relapse">
+                    <label class="form-check-label" for="relapse">Sí</label>
+                  </div>
+                </div>
+              </div>
+              
+          </div>
+          <div class="col-md-3 mb-1">
+            <button id="btn-calcular-rutas" class="btn btn-success w-100">Predecir cancer</button>
+          </div>
+        </div>
+      </div>
+
+
+    <!-- Cargar Bootstrap JS y dependencias de jQuery y Popper.js desde CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
