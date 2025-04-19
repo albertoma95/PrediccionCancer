@@ -17,6 +17,8 @@
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Predicción del cancer</a>
     </nav>
     <div class="container-fluid">
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
         <div class="row bg-light p-3">
           <div class="col-md-3 mb-1">
             <div class="row bg-light p-3">
@@ -212,7 +214,14 @@
                   </div>
                 </div>
               </div>
-              
+          </div>
+          <div class="col-md-3 mb-1">
+            <div class="row bg-light p-3">
+              <div class="col-md-12 mb-1">
+                <label for="id_imagen" class="form-label"><strong>Sube una imagen (PNG o JPEG)</strong></label>
+                <input type="file" class="form-control" id="id_imagen" name="imagen" accept="image/png, image/jpeg">
+              </div>
+            </div>
           </div>
           <div class="col-md-3 mb-1">
             <button id="btn-calcular-rutas" class="btn btn-success w-100">Predecir cancer</button>
