@@ -17,32 +17,19 @@
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Predicción del cancer</a>
     </nav>
     <div class="container-fluid">
-      <form method="POST" enctype="multipart/form-data">
+      <form id="formulario" method="POST">
         {% csrf_token %}
         <div class="row bg-light p-3">
           <div class="col-md-3 mb-1">
             <div class="row bg-light p-3">
-                <div class="col-md-12 mb-1">
-                  <label for="Sexo" class="form-label"><strong>Sexo</strong></label>
-                </div>
-                <div class="col-md-3 mb-1">
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="Sexo" id="masculino" value="M">
-                    <label class="form-check-label" for="masculino">
-                      Masculino
-                    </label>
-                  </div>
-                </div>
-                <div class="col-md-3 mb-1">
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="Sexo" id="femenino" value="F">
-                    <label class="form-check-label" for="femenino">
-                      Femenino
-                    </label>
-                  </div>
-                </div>
+              <div>
+                <label for="Sexo">Sexo:</label>
+                <select name="Sexo" id="Sexo" required>
+                  <option value="M">Masculino</option>
+                  <option value="F">Femenino</option>
+                </select>
               </div>
-              
+              </div>
           </div>
           <div class="col-md-3 mb-1">
             <div class="row bg-light p-3">
@@ -223,11 +210,17 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3 mb-1">
-            <button id="btn-calcular-rutas" class="btn btn-success w-100">Predecir cancer</button>
+          <div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
           </div>
         </div>
+      </form>
+      <div id="resultados" style="display:none;">
+        <div class="alert alert-info">
+          <strong>Predicción del modelo:</strong> <span id="prediccion"></span>
+        </div>
       </div>
+    </div>
 
 
     <!-- Cargar Bootstrap JS y dependencias de jQuery y Popper.js desde CDN -->
