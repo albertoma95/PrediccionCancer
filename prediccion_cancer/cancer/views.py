@@ -37,13 +37,13 @@ def predict(request):
             df = pd.DataFrame(data)
 
             # Cargar el modelo entrenado (asegúrate de que esté en la ruta correcta)
-            model = joblib.load('cancer/models/modelo_svm.pkl')
+            model = joblib.load('cancer/models/xgb_model.pkl')
 
             # Realizar la predicción usando el modelo
             prediction = model.predict(df)
 
             # Devolver la predicción en formato JSON para AJAX
-            return JsonResponse({'prediction': prediction[0]})
+            return JsonResponse({'prediction': int(prediction[0])})
         
     return JsonResponse({'error': 'Petición no válida'}, status=400)
 
