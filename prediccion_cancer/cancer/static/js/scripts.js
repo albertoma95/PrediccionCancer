@@ -1,6 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
   const formulario = document.getElementById('formulario');
   
+  // Mostrar el valor del slider al lado
+  const slider = document.getElementById('image_weight');
+  const output = document.getElementById('weight_value');
+  output.textContent = 'Peso de la imagen: ' + slider.value + '%';
+  slider.oninput = function() {
+      output.textContent = 'Peso de la imagen: ' + slider.value + '%';
+  };
+
   formulario.addEventListener('submit', function(e) {
     e.preventDefault();  // Prevenir el envío normal del formulario
 
@@ -18,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const imagenBase64 = reader.result;
 
         // Recoger el resto de los datos del formulario
+        console.log(slider.value);
         const datos = {
           Sexo: document.getElementById('Sexo').value,
           Age: document.getElementById('Age').value,
@@ -33,7 +42,8 @@ document.addEventListener('DOMContentLoaded', function() {
           early_detection: document.getElementById('early_detection').checked ? 'Yes' : 'No',
           inflammatory_bowel_disease: document.getElementById('inflammatory_bowel_disease').checked ? 'Yes' : 'No',
           relapse: document.getElementById('relapse').checked ? 'Yes' : 'No',
-          imagen_base64: imagenBase64  // Añadimos la imagen convertida a base64
+          imagen_base64: imagenBase64,  // Añadimos la imagen convertida a base64
+          image_weight: slider.value   // Recogemos el valor del slider
         };
 
         // Usar fetch para enviar los datos al servidor

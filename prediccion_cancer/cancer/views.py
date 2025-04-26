@@ -66,15 +66,18 @@ def predict(request):
         prediction_tabular = model_tabular.predict(df)
         prediction_tabular = int(prediction_tabular[0])  # Asegúrate de obtener el valor entero
 
+        # Obtener el peso de la imagen desde el JSON
+        image_weight = float(body.get('image_weight', 60))  # Valor por defecto es 60%
+
         # Hacer una media ponderada entre las predicciones
-        weight_tabular = 0.4
-        weight_image = 0.6
+        weight_tabular = (100 - image_weight) / 100
+        weight_image = image_weight / 100
 
         final_prediction = (prediction_tabular * weight_tabular) + (prediction_image * weight_image)
         final_prediction = 1 if final_prediction >= 0.5 else 0  # Si la media ponderada es mayor o igual a 0.5, consideramos cáncer maligno
 
         # Devolver la predicción en formato JSON para AJAX
         return JsonResponse({'prediction': final_prediction})
-        
+
     return JsonResponse({'error': 'Petición no válida'}, status=400)
 
