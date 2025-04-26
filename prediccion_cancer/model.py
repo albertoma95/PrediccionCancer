@@ -7,6 +7,7 @@ from sklearn.pipeline import Pipeline
 import xgboost as xgb
 from sklearn.metrics import classification_report, accuracy_score
 import joblib  # Para guardar el modelo
+import numpy as np
 
 # Cargar el dataset
 df = pd.read_csv('../dataset/final.csv')
@@ -30,7 +31,10 @@ preprocessor = ColumnTransformer(
         ('cat', OneHotEncoder(drop='first'), categorical_columns)
     ])
 
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
 # Crear un pipeline que combine preprocesamiento y entrenamiento del modelo
+ratio = float(np.sum(y_train == 0)) / np.sum(y_train == 1)
 model_pipeline = Pipeline(steps=[
     ('preprocessor', preprocessor),
     ('scaler', StandardScaler()),  # Escalar los datos
@@ -46,12 +50,13 @@ model_pipeline = Pipeline(steps=[
         colsample_bytree=0.7, 
         gamma=0.5, 
         lambda_=0, 
-        alpha=1
+        alpha=1,
+        scale_pos_weight=ratio 
     ))
 ])
 
 # Dividir los datos en entrenamiento y prueba
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=42)
 
 # Entrenar el modelo
 model_pipeline.fit(X_train, y_train)
