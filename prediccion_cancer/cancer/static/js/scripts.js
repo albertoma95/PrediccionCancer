@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const imagenBase64 = reader.result;
 
         // Recoger el resto de los datos del formulario
-        console.log(slider.value);
         const datos = {
           Sexo: document.getElementById('Sexo').value,
           Age: document.getElementById('Age').value,
@@ -67,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
           } else {
             alert('Error en la predicción.');
           }
-          document.getElementById('resultados').style.display = 'block';
+          $('#predictionModal').modal('show');
         })
         .catch(error => {
           console.error('Error:', error);
